@@ -1,0 +1,406 @@
+<!doctype html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width,initial-scale=1">
+<title>Security - Flashix</title>
+
+<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.15.4/css/all.min.css">
+
+<style>
+*{
+    margin:0;
+    padding:0;
+    box-sizing:border-box;
+}
+
+body{
+    font-family:-apple-system,BlinkMacSystemFont,"Segoe UI",Roboto,sans-serif;
+    background:#f5f7fb;
+    color:#111827;
+    display:flex;
+    justify-content:center;
+}
+
+:root{
+    --blue:#1e7cff;
+    --blue2:#4aa3ff;
+    --green:#22c55e;
+    --orange:#f59e0b;
+    --purple:#8b5cf6;
+    --red:#ef4444;
+    --card:#ffffff;
+    --border:#e5e7eb;
+    --muted:#6b7280;
+}
+
+.app{
+    width:100%;
+    max-width:420px;
+    min-height:100vh;
+    padding:80px 16px 100px;
+}
+
+/* TOP HEADER */
+#fxHeader{
+    position:fixed;
+    top:0;
+    left:50%;
+    transform:translateX(-50%);
+    width:100%;
+    max-width:420px;
+    height:64px;
+    background:rgba(255,255,255,.96);
+    backdrop-filter:blur(12px);
+    border-bottom:1px solid #ddd;
+    display:flex;
+    align-items:center;
+    justify-content:space-between;
+    padding:0 16px;
+    z-index:999;
+}
+
+.fxName{
+    font-size:22px;
+    font-weight:800;
+    background:linear-gradient(90deg,var(--blue),var(--blue2));
+    -webkit-background-clip:text;
+    -webkit-text-fill-color:transparent;
+}
+
+.fxCenter{
+    position:absolute;
+    left:50%;
+    transform:translateX(-50%);
+    font-size:12px;
+    color:#555;
+    white-space:nowrap;
+}
+
+#menuBtn{
+    background:none;
+    border:none;
+    font-size:22px;
+    cursor:pointer;
+}
+
+/* HERO */
+.header{
+    background:linear-gradient(135deg,var(--blue),var(--blue2));
+    color:#fff;
+    padding:24px;
+    border-radius:18px;
+}
+
+.header h1{
+    font-size:28px;
+    margin-bottom:8px;
+}
+
+.header p{
+    font-size:15px;
+    opacity:.95;
+}
+
+/* CARD */
+.card{
+    background:#fff;
+    border-radius:18px;
+    padding:20px;
+    margin-top:16px;
+    box-shadow:0 8px 20px rgba(0,0,0,.05);
+}
+
+.card h2{
+    font-size:18px;
+    margin-bottom:12px;
+    display:flex;
+    align-items:center;
+    gap:10px;
+}
+
+.card p{
+    font-size:14px;
+    line-height:1.7;
+    color:#374151;
+}
+
+.list{
+    display:flex;
+    flex-direction:column;
+    gap:12px;
+}
+
+.item{
+    border:1px solid var(--border);
+    border-radius:14px;
+    padding:14px;
+}
+
+.item strong{
+    display:block;
+    margin-bottom:5px;
+    font-size:14px;
+}
+
+.muted{
+    color:var(--muted);
+    font-size:13px;
+    line-height:1.5;
+}
+
+/* BUTTON */
+.btn{
+    width:100%;
+    margin-top:22px;
+    border:none;
+    padding:15px;
+    border-radius:14px;
+    background:var(--blue);
+    color:#fff;
+    font-size:16px;
+    font-weight:700;
+    cursor:pointer;
+}
+
+/* FOOTER */
+.footer-note{
+    text-align:center;
+    font-size:12px;
+    color:var(--muted);
+    margin-top:18px;
+}
+
+/* NAV */
+.nav{
+    position:fixed;
+    bottom:0;
+    left:50%;
+    transform:translateX(-50%);
+    width:100%;
+    max-width:420px;
+    height:74px;
+    background:#fff;
+    border-top:1px solid #ddd;
+    display:flex;
+    z-index:999;
+}
+
+.nav-btn{
+    flex:1;
+    border:none;
+    background:none;
+    display:flex;
+    flex-direction:column;
+    align-items:center;
+    justify-content:center;
+    gap:4px;
+    color:#9ca3af;
+    font-size:12px;
+    cursor:pointer;
+}
+
+.nav-btn.active{
+    color:var(--blue);
+}
+
+/* SIDE MENU */
+.menu-overlay{
+    position:fixed;
+    inset:0;
+    background:rgba(0,0,0,.45);
+    opacity:0;
+    visibility:hidden;
+    transition:.3s;
+    z-index:1000;
+}
+
+.menu-overlay.show{
+    opacity:1;
+    visibility:visible;
+}
+
+.side-menu{
+    position:fixed;
+    top:0;
+    left:-280px;
+    width:280px;
+    height:100%;
+    background:#fff;
+    z-index:1001;
+    transition:.3s;
+    padding-top:70px;
+    box-shadow:5px 0 20px rgba(0,0,0,.15);
+}
+
+.side-menu.open{
+    left:0;
+}
+
+.side-menu ul{
+    list-style:none;
+}
+
+.side-menu li{
+    border-bottom:1px solid #eee;
+}
+
+.side-menu a{
+    display:flex;
+    align-items:center;
+    gap:12px;
+    padding:16px 20px;
+    text-decoration:none;
+    color:#111827;
+    font-weight:600;
+}
+
+.side-menu i{
+    color:var(--blue);
+    width:22px;
+}
+
+@media(max-width:420px){
+    .fxCenter{display:none;}
+}
+</style>
+</head>
+
+<body>
+
+<header id="fxHeader">
+    <div class="fxName">Flashix</div>
+    <div class="fxCenter">World’s Largest Flash USDT Software</div>
+    <button id="menuBtn"><i class="fas fa-bars"></i></button>
+</header>
+
+<div class="app">
+
+    <div class="header">
+        <h1>Security</h1>
+        <p>Advanced protection for your wallet and transactions</p>
+    </div>
+
+    <div class="card">
+        <h2><i class="fas fa-lock" style="color:#22c55e"></i> Platform Protection</h2>
+        <p>
+            Flashix uses modern security systems to keep wallet access,
+            transaction activity, and user sessions protected at all times.
+        </p>
+    </div>
+
+    <div class="card">
+        <h2><i class="fas fa-shield-alt" style="color:#1e7cff"></i> Core Security Features</h2>
+
+        <div class="list">
+
+            <div class="item">
+                <strong>Encrypted Connection</strong>
+                <div class="muted">All activity runs through secure HTTPS encrypted channels.</div>
+            </div>
+
+            <div class="item">
+                <strong>Live Threat Monitoring</strong>
+                <div class="muted">Suspicious behavior is automatically detected and blocked.</div>
+            </div>
+
+            <div class="item">
+                <strong>Protected Withdrawals</strong>
+                <div class="muted">Withdrawal systems are monitored for unusual activity.</div>
+            </div>
+
+            <div class="item">
+                <strong>Session Safety</strong>
+                <div class="muted">Inactive sessions may auto-expire for better account safety.</div>
+            </div>
+
+        </div>
+    </div>
+
+    <div class="card">
+        <h2><i class="fas fa-user-shield" style="color:#8b5cf6"></i> User Safety Tips</h2>
+
+        <div class="list">
+
+            <div class="item">
+                <strong>Keep Credentials Private</strong>
+                <div class="muted">Never share passwords or recovery details.</div>
+            </div>
+
+            <div class="item">
+                <strong>Use Trusted Devices</strong>
+                <div class="muted">Login only from personal and secure devices.</div>
+            </div>
+
+            <div class="item">
+                <strong>Verify Addresses</strong>
+                <div class="muted">Always double-check wallet addresses before sending funds.</div>
+            </div>
+
+        </div>
+    </div>
+
+    <div class="card">
+        <h2><i class="fas fa-sync-alt" style="color:#f59e0b"></i> Continuous Updates</h2>
+        <p>
+            Our systems are regularly updated to improve stability,
+            strengthen protection, and maintain secure wallet performance.
+        </p>
+    </div>
+
+    <button class="btn" onclick="window.location.href='index.html'">
+        <i class="fas fa-arrow-left"></i> Back to Wallet
+    </button>
+
+    <div class="footer-note">
+        Security First • Flashix 2026
+    </div>
+
+</div>
+
+<!-- BOTTOM NAV -->
+<div class="nav">
+    <button class="nav-btn active">
+        <i class="fas fa-wallet"></i>
+        <span>Wallet</span>
+    </button>
+
+    <button class="nav-btn">
+        <i class="fas fa-list"></i>
+        <span>Transactions</span>
+    </button>
+</div>
+
+<!-- SIDE MENU -->
+<div class="menu-overlay" id="overlay"></div>
+
+<div class="side-menu" id="menu">
+    <ul>
+        <li><a href="index.html"><i class="fas fa-wallet"></i> Wallet</a></li>
+        <li><a href="about.html"><i class="fas fa-info-circle"></i> About Us</a></li>
+        <li><a href="faq.html"><i class="fas fa-question-circle"></i> FAQ</a></li>
+        <li><a href="security.html"><i class="fas fa-shield-alt"></i> Security</a></li>
+        <li><a href="privacy.html"><i class="fas fa-user-secret"></i> Privacy Policy</a></li>
+        <li><a href="terms.html"><i class="fas fa-file-alt"></i> Terms</a></li>
+        <li><a href="contact.html"><i class="fas fa-headset"></i> Contact</a></li>
+    </ul>
+</div>
+
+<script>
+const menuBtn = document.getElementById("menuBtn");
+const menu = document.getElementById("menu");
+const overlay = document.getElementById("overlay");
+
+menuBtn.onclick = () => {
+    menu.classList.add("open");
+    overlay.classList.add("show");
+};
+
+overlay.onclick = () => {
+    menu.classList.remove("open");
+    overlay.classList.remove("show");
+};
+</script>
+
+</body>
+</html>
