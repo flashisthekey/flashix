@@ -1,0 +1,370 @@
+<!doctype html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width,initial-scale=1">
+<title>Privacy Policy - Flashix</title>
+
+<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.15.4/css/all.min.css">
+
+<style>
+*{
+    margin:0;
+    padding:0;
+    box-sizing:border-box;
+}
+
+body{
+    font-family:-apple-system,BlinkMacSystemFont,"Segoe UI",Roboto,sans-serif;
+    background:#f5f7fb;
+    color:#111827;
+    display:flex;
+    justify-content:center;
+}
+
+:root{
+    --blue:#1e7cff;
+    --blue2:#4aa3ff;
+    --card:#ffffff;
+    --border:#e5e7eb;
+    --muted:#6b7280;
+}
+
+.app{
+    width:100%;
+    max-width:420px;
+    min-height:100vh;
+    padding:80px 16px 100px;
+}
+
+/* HEADER */
+#fxHeader{
+    position:fixed;
+    top:0;
+    left:50%;
+    transform:translateX(-50%);
+    width:100%;
+    max-width:420px;
+    height:64px;
+    background:rgba(255,255,255,.96);
+    backdrop-filter:blur(12px);
+    border-bottom:1px solid #ddd;
+    display:flex;
+    align-items:center;
+    justify-content:space-between;
+    padding:0 16px;
+    z-index:999;
+}
+
+.fxName{
+    font-size:22px;
+    font-weight:800;
+    background:linear-gradient(90deg,var(--blue),var(--blue2));
+    -webkit-background-clip:text;
+    -webkit-text-fill-color:transparent;
+}
+
+.fxCenter{
+    position:absolute;
+    left:50%;
+    transform:translateX(-50%);
+    font-size:12px;
+    color:#555;
+    white-space:nowrap;
+}
+
+#menuBtn{
+    background:none;
+    border:none;
+    font-size:22px;
+    cursor:pointer;
+}
+
+/* HERO */
+.header{
+    background:linear-gradient(135deg,var(--blue),var(--blue2));
+    color:#fff;
+    padding:24px;
+    border-radius:18px;
+}
+
+.header h1{
+    font-size:27px;
+    margin-bottom:8px;
+}
+
+.header p{
+    font-size:15px;
+    opacity:.95;
+}
+
+/* CARD */
+.card{
+    background:var(--card);
+    border-radius:18px;
+    padding:20px;
+    margin-top:16px;
+    box-shadow:0 8px 20px rgba(0,0,0,.05);
+}
+
+.card h2{
+    font-size:18px;
+    margin-bottom:10px;
+    display:flex;
+    align-items:center;
+    gap:10px;
+}
+
+.card p{
+    font-size:14px;
+    line-height:1.7;
+    color:#374151;
+}
+
+.card ul{
+    padding-left:18px;
+    margin-top:10px;
+}
+
+.card li{
+    font-size:14px;
+    color:#374151;
+    margin-bottom:8px;
+    line-height:1.6;
+}
+
+/* BUTTON */
+.btn{
+    width:100%;
+    margin-top:22px;
+    border:none;
+    padding:15px;
+    border-radius:14px;
+    background:var(--blue);
+    color:white;
+    font-size:16px;
+    font-weight:700;
+    cursor:pointer;
+}
+
+/* NAV */
+.nav{
+    position:fixed;
+    bottom:0;
+    left:50%;
+    transform:translateX(-50%);
+    width:100%;
+    max-width:420px;
+    height:74px;
+    background:#fff;
+    border-top:1px solid #ddd;
+    display:flex;
+    z-index:999;
+}
+
+.nav-btn{
+    flex:1;
+    border:none;
+    background:none;
+    display:flex;
+    flex-direction:column;
+    align-items:center;
+    justify-content:center;
+    gap:4px;
+    color:#9ca3af;
+    font-size:12px;
+    cursor:pointer;
+}
+
+.nav-btn.active{
+    color:var(--blue);
+}
+
+/* SIDE MENU */
+.menu-overlay{
+    position:fixed;
+    inset:0;
+    background:rgba(0,0,0,.45);
+    opacity:0;
+    visibility:hidden;
+    transition:.3s;
+    z-index:1000;
+}
+
+.menu-overlay.show{
+    opacity:1;
+    visibility:visible;
+}
+
+.side-menu{
+    position:fixed;
+    top:0;
+    left:-280px;
+    width:280px;
+    height:100%;
+    background:#fff;
+    z-index:1001;
+    transition:.3s;
+    padding-top:70px;
+    box-shadow:5px 0 20px rgba(0,0,0,.15);
+}
+
+.side-menu.open{
+    left:0;
+}
+
+.side-menu ul{
+    list-style:none;
+}
+
+.side-menu li{
+    border-bottom:1px solid #eee;
+}
+
+.side-menu a{
+    display:flex;
+    align-items:center;
+    gap:12px;
+    padding:16px 20px;
+    text-decoration:none;
+    color:#111827;
+    font-weight:600;
+}
+
+.side-menu i{
+    color:var(--blue);
+    width:22px;
+}
+
+.footer-note{
+    text-align:center;
+    font-size:12px;
+    color:var(--muted);
+    margin-top:18px;
+}
+
+@media(max-width:420px){
+    .fxCenter{display:none;}
+}
+</style>
+</head>
+
+<body>
+
+<header id="fxHeader">
+    <div class="fxName">Flashix</div>
+    <div class="fxCenter">World’s Largest Flash USDT Software</div>
+    <button id="menuBtn"><i class="fas fa-bars"></i></button>
+</header>
+
+<div class="app">
+
+    <div class="header">
+        <h1>Privacy Policy</h1>
+        <p>Your privacy and security matter to us</p>
+    </div>
+
+    <div class="card">
+        <h2><i class="fas fa-user-shield" style="color:#1e7cff"></i> Information We Collect</h2>
+        <p>
+            Flashix may collect limited user information required to improve service quality,
+            maintain wallet functionality, and provide customer support.
+        </p>
+        <ul>
+            <li>Name or username (if provided)</li>
+            <li>Email address (optional)</li>
+            <li>Browser/device information</li>
+            <li>Usage activity for security monitoring</li>
+        </ul>
+    </div>
+
+    <div class="card">
+        <h2><i class="fas fa-lock" style="color:#22c55e"></i> How We Protect Data</h2>
+        <p>
+            We use secure systems, encrypted connections, and monitoring tools to help
+            protect user information against unauthorized access.
+        </p>
+    </div>
+
+    <div class="card">
+        <h2><i class="fas fa-database" style="color:#f59e0b"></i> How Data Is Used</h2>
+        <ul>
+            <li>To improve wallet performance</li>
+            <li>To detect suspicious activity</li>
+            <li>To respond to support requests</li>
+            <li>To enhance user experience</li>
+        </ul>
+    </div>
+
+    <div class="card">
+        <h2><i class="fas fa-cookie-bite" style="color:#ef4444"></i> Cookies</h2>
+        <p>
+            Flashix may use cookies or local storage to save preferences,
+            session states, and improve loading speed.
+        </p>
+    </div>
+
+    <div class="card">
+        <h2><i class="fas fa-sync-alt" style="color:#8b5cf6"></i> Policy Updates</h2>
+        <p>
+            We may update this Privacy Policy anytime to reflect improvements,
+            new features, or legal requirements.
+        </p>
+    </div>
+
+    <button class="btn" onclick="window.location.href='index.html'">
+        <i class="fas fa-arrow-left"></i> Back to Wallet
+    </button>
+
+    <div class="footer-note">
+        Last Updated: 2026
+    </div>
+
+</div>
+
+<!-- BOTTOM NAV -->
+<div class="nav">
+    <button class="nav-btn active">
+        <i class="fas fa-wallet"></i>
+        <span>Wallet</span>
+    </button>
+
+    <button class="nav-btn">
+        <i class="fas fa-list"></i>
+        <span>Transactions</span>
+    </button>
+</div>
+
+<!-- SIDE MENU -->
+<div class="menu-overlay" id="overlay"></div>
+
+<div class="side-menu" id="menu">
+    <ul>
+        <li><a href="index.html"><i class="fas fa-wallet"></i> Wallet</a></li>
+        <li><a href="about.html"><i class="fas fa-info-circle"></i> About Us</a></li>
+        <li><a href="faq.html"><i class="fas fa-question-circle"></i> FAQ</a></li>
+        <li><a href="security.html"><i class="fas fa-shield-alt"></i> Security</a></li>
+        <li><a href="privacy.html"><i class="fas fa-user-secret"></i> Privacy Policy</a></li>
+        <li><a href="terms.html"><i class="fas fa-file-alt"></i> Terms</a></li>
+        <li><a href="contact.html"><i class="fas fa-headset"></i> Contact</a></li>
+    </ul>
+</div>
+
+<script>
+const menuBtn = document.getElementById("menuBtn");
+const menu = document.getElementById("menu");
+const overlay = document.getElementById("overlay");
+
+menuBtn.onclick = () => {
+    menu.classList.add("open");
+    overlay.classList.add("show");
+};
+
+overlay.onclick = () => {
+    menu.classList.remove("open");
+    overlay.classList.remove("show");
+};
+</script>
+
+</body>
+</html>
