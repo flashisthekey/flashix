@@ -1199,10 +1199,9 @@ observer.observe(document.body,{
 
 
 <header id="fxHeader">
- <div class="nav-left">
-  <a href="/" class="logo">
+<div class="fxBrand">
   <img src="/logo.png" alt="Flashix Logo" class="logo-img">
-</a>
+</div>
     </div>
 <div class="fxCenter">
    Largest Flash USDT Software
@@ -1332,7 +1331,19 @@ observer.observe(document.body,{
 .app{
   padding-top:72px !important;
 }
+.fxBrand{
+  display:flex;
+  align-items:center;
+  justify-content:flex-start;
+  min-width:120px;
+}
 
+.logo-img{
+  height:32px;
+  width:auto;
+  display:block;
+  object-fit:contain;
+}
 
 @media(max-width:380px){
   .fxCenter{
