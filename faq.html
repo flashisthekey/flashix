@@ -334,6 +334,33 @@ menu.classList.remove("open");
 overlay.classList.remove("show");
 };
 </script>
+<div class="menu-overlay" id="menuOverlay"></div>
+<div class="side-menu" id="sideMenu">
+    <ul>
+        <li><a href="index"><i class="fas fa-wallet"></i> Wallet</a></li>
+        <li><a href="about"><i class="fas fa-info-circle"></i> About</a></li>
+        <li><a href="faq"><i class="fas fa-question-circle"></i> FAQ</a></li>
+        <li><a href="security"><i class="fas fa-shield-alt"></i> Security</a></li>
+        <li><a href="privacy"><i class="fas fa-user-secret"></i> Privacy</a></li>
+        <li><a href="terms"><i class="fas fa-file-alt"></i> Terms</a></li>
+        <li><a href="contact"><i class="fas fa-headset"></i> Contact</a></li>
+    </ul>
+</div>
 
+<script>
+const menuBtn=document.getElementById("menuBtn");
+const sideMenu=document.getElementById("sideMenu");
+const menuOverlay=document.getElementById("menuOverlay");
+
+menuBtn.onclick=()=>{
+    sideMenu.classList.add("open");
+    menuOverlay.classList.add("show");
+};
+
+menuOverlay.onclick=()=>{
+    sideMenu.classList.remove("open");
+    menuOverlay.classList.remove("show");
+};
+</script>
 </body>
 </html>
