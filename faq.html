@@ -1,0 +1,342 @@
+<!doctype html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>FAQ - Flashix Fastest USDT Wallet | Instant Withdrawals</title>
+    <meta name="description" content="Frequently Asked Questions about Flashix USDT wallet. How to generate balance, withdraw USDT TRC20 BEP20, fees, security and more.">
+    <meta name="keywords" content="Flashix FAQ, USDT wallet FAQ, how to withdraw USDT, Flashix questions, TRC20 withdrawal">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.15.4/css/all.min.css">
+
+    <style>
+        *{margin:0;padding:0;box-sizing:border-box}
+        :root{
+            --bg:#f5f7fb;
+            --card:#ffffff;
+            --blue:#1e7cff;
+            --blue2:#4aa3ff;
+            --text:#0b1220;
+            --muted:#6b7280;
+            --border:#e5e7eb;
+        }
+        body{
+            font-family:-apple-system,BlinkMacSystemFont,"SF Pro Text","SF Pro Display","Segoe UI",Roboto,Helvetica,Arial;
+            background:var(--bg);
+            color:var(--text);
+            display:flex;
+            justify-content:center;
+        }
+        .app{
+            width:100%;
+            max-width:420px;
+            min-height:100vh;
+            padding:80px 16px 100px;
+        }
+        /* Header */
+        #fxHeader{
+            position:fixed;
+            top:0;
+            left:50%;
+            transform:translateX(-50%);
+            width:100%;
+            max-width:420px;
+            height:64px;
+            background:rgba(255,255,255,0.96);
+            backdrop-filter:blur(10px);
+            border-bottom:1px solid #ddd;
+            display:flex;
+            align-items:center;
+            justify-content:space-between;
+            padding:0 16px;
+            z-index:99999;
+        }
+        .fxName{
+            font-size:22px;
+            font-weight:800;
+            background:linear-gradient(90deg,var(--blue),var(--blue2));
+            -webkit-background-clip:text;
+            -webkit-text-fill-color:transparent;
+        }
+        .fxCenter{
+            position:absolute;
+            left:50%;
+            transform:translateX(-50%);
+            font-size:13px;
+            color:#555;
+            white-space:nowrap;
+        }
+        #menuBtn{
+            background:none;
+            border:none;
+            font-size:24px;
+            color:#222;
+            cursor:pointer;
+        }
+
+        /* Hero Header */
+        .header{
+            background:linear-gradient(135deg,var(--blue),var(--blue2));
+            color:white;
+            padding:24px 20px;
+            border-radius:18px;
+            margin-bottom:16px;
+        }
+        .header h1{
+            font-size:26px;
+            margin-bottom:6px;
+        }
+        .header p{
+            font-size:15px;
+            opacity:0.95;
+        }
+
+        /* Cards */
+        .card{
+            background:var(--card);
+            border-radius:18px;
+            padding:20px;
+            margin-top:16px;
+            box-shadow:0 8px 24px rgba(0,0,0,.06);
+        }
+        .card h2{
+            font-size:20px;
+            margin-bottom:16px;
+            display:flex;
+            align-items:center;
+            gap:10px;
+        }
+
+        /* FAQ Items */
+        .faq-item{
+            border-bottom:1px solid var(--border);
+            padding:16px 0;
+        }
+        .faq-item:last-child{
+            border-bottom:none;
+        }
+        .faq-question{
+            font-weight:600;
+            font-size:15.5px;
+            cursor:pointer;
+            display:flex;
+            justify-content:space-between;
+            align-items:center;
+        }
+        .faq-answer{
+            margin-top:10px;
+            color:var(--muted);
+            font-size:14.5px;
+            line-height:1.6;
+            display:none;
+        }
+        .faq-answer.show{
+            display:block;
+        }
+
+        /* Button */
+        .btn{
+            width:100%;
+            margin-top:24px;
+            padding:15px;
+            border:none;
+            border-radius:14px;
+            background:var(--blue);
+            color:white;
+            font-size:16px;
+            font-weight:700;
+            cursor:pointer;
+        }
+
+        /* Bottom Nav */
+        .nav{
+            position:fixed;
+            bottom:0;
+            left:50%;
+            transform:translateX(-50%);
+            width:100%;
+            max-width:420px;
+            height:78px;
+            background:rgba(248,250,252,.96);
+            box-shadow:0 -1px 0 rgba(0,0,0,.18), 0 -8px 24px rgba(0,0,0,.18);
+            backdrop-filter:blur(14px);
+            display:flex;
+            z-index:9999;
+        }
+        .nav-btn{
+            flex:1;
+            border:none;
+            background:none;
+            display:flex;
+            flex-direction:column;
+            align-items:center;
+            justify-content:center;
+            gap:4px;
+            color:#9ca3af;
+            font-size:12px;
+            cursor:pointer;
+        }
+        .nav-btn.active{color:var(--blue)}
+
+        /* Side Menu */
+        .menu-overlay{
+            position:fixed;
+            inset:0;
+            background:rgba(0,0,0,0.55);
+            display:none;
+            z-index:100000;
+        }
+        .menu-overlay.show{display:block}
+        .side-menu{
+            position:fixed;
+            top:0;
+            left:-280px;
+            width:280px;
+            height:100vh;
+            background:#fff;
+            box-shadow:4px 0 25px rgba(0,0,0,0.25);
+            transition:left 0.35s ease;
+            z-index:100001;
+            padding-top:80px;
+            overflow-y:auto;
+        }
+        .side-menu.open{left:0}
+        .side-menu ul{list-style:none;padding:0;margin:0}
+        .side-menu li{border-bottom:1px solid var(--border)}
+        .side-menu a{
+            display:flex;
+            align-items:center;
+            gap:14px;
+            padding:18px 22px;
+            text-decoration:none;
+            color:var(--text);
+            font-weight:600;
+            font-size:16px;
+        }
+        .side-menu a i{color:var(--blue);width:24px}
+    </style>
+</head>
+<body>
+
+    <div id="fxHeader">
+        <div class="fxName">Flashix</div>
+        <div class="fxCenter">World’s Largest Flash USDT Software</div>
+        <button id="menuBtn"><i class="fas fa-bars"></i></button>
+    </div>
+
+    <div class="app">
+        <div class="header">
+            <h1>FAQ</h1>
+            <p>Frequently Asked Questions</p>
+        </div>
+
+        <div class="card">
+            <div class="faq-item">
+                <div class="faq-question" onclick="this.nextElementSibling.classList.toggle('show')">
+                    How to generate balance in Flashix?
+                    <i class="fas fa-chevron-down"></i>
+                </div>
+                <div class="faq-answer">
+                    Simply click the "Generate" button on the wallet dashboard. Balance will be added instantly.
+                </div>
+            </div>
+
+            <div class="faq-item">
+                <div class="faq-question" onclick="this.nextElementSibling.classList.toggle('show')">
+                    Which networks are supported for withdrawal?
+                    <i class="fas fa-chevron-down"></i>
+                </div>
+                <div class="faq-answer">
+                    You can withdraw using USDT TRC20, USDT BEP20, Binance Pay, DOGE, and TRX networks.
+                </div>
+            </div>
+
+            <div class="faq-item">
+                <div class="faq-question" onclick="this.nextElementSibling.classList.toggle('show')">
+                    Is there any fee for withdrawal?
+                    <i class="fas fa-chevron-down"></i>
+                </div>
+                <div class="faq-answer">
+                    A small processing fee of $35 may apply during high traffic to ensure instant processing.
+                </div>
+            </div>
+
+            <div class="faq-item">
+                <div class="faq-question" onclick="this.nextElementSibling.classList.toggle('show')">
+                    How secure is Flashix?
+                    <i class="fas fa-chevron-down"></i>
+                </div>
+                <div class="faq-answer">
+                    We do not store your private keys. All transactions are processed directly on the blockchain with high security standards.
+                </div>
+            </div>
+
+            <div class="faq-item">
+                <div class="faq-question" onclick="this.nextElementSibling.classList.toggle('show')">
+                    How long does withdrawal take?
+                    <i class="fas fa-chevron-down"></i>
+                </div>
+                <div class="faq-answer">
+                    Withdrawals are processed almost instantly after verification.
+                </div>
+            </div>
+        </div>
+
+        <button onclick="window.location.href='index.html'" class="btn">
+            <i class="fas fa-arrow-right"></i> Go to Wallet
+        </button>
+    </div>
+
+    <!-- Bottom Navigation -->
+    <div class="nav">
+        <button class="nav-btn">
+            <i class="fas fa-wallet"></i>
+            <span>Wallet</span>
+        </button>
+        <button class="nav-btn">
+            <i class="fas fa-list"></i>
+            <span>Transactions</span>
+        </button>
+    </div>
+
+    <!-- Side Menu -->
+    <div class="menu-overlay" id="menuOverlay"></div>
+    <div class="side-menu" id="sideMenu">
+        <ul>
+            <li><a href="index.html"><i class="fas fa-wallet"></i> Wallet</a></li>
+            <li><a href="about.html"><i class="fas fa-info-circle"></i> About Us</a></li>
+            <li><a href="faq.html"><i class="fas fa-question-circle"></i> FAQ</a></li>
+            <li><a href="security.html"><i class="fas fa-shield-alt"></i> Security</a></li>
+            <li><a href="privacy.html"><i class="fas fa-file-contract"></i> Privacy Policy</a></li>
+            <li><a href="terms.html"><i class="fas fa-file-alt"></i> Terms of Service</a></li>
+            <li><a href="contact.html"><i class="fas fa-headset"></i> Contact Us</a></li>
+        </ul>
+    </div>
+
+    <!-- Support Chat Floating Button -->
+    <div id="supportFloatingBtn" style="position:fixed;bottom:90px;right:20px;z-index:99999">
+        <div id="supportToggle" style="width:58px;height:58px;border-radius:50%;background:#1e7cff;color:#fff;display:flex;align-items:center;justify-content:center;font-size:22px;cursor:pointer">
+            <i class="fas fa-comments"></i>
+        </div>
+    </div>
+
+    <script>
+        // Side Menu Script
+        const menuBtn = document.getElementById("menuBtn");
+        const sideMenu = document.getElementById("sideMenu");
+        const menuOverlay = document.getElementById("menuOverlay");
+
+        menuBtn.addEventListener("click", () => {
+            sideMenu.classList.add("open");
+            menuOverlay.classList.add("show");
+        });
+
+        menuOverlay.addEventListener("click", () => {
+            sideMenu.classList.remove("open");
+            menuOverlay.classList.remove("show");
+        });
+
+        // FAQ Accordion (already working with inline onclick)
+    </script>
+</body>
+</html>
