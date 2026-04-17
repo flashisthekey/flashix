@@ -1,8 +1,46 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <urlset xmlns="http://www.sitemaps.org/schemas/sitemap/0.9">
+
   <url>
     <loc>https://flashix.2bd.net/</loc>
+    <priority>1.00</priority>
     <changefreq>daily</changefreq>
-    <priority>1.0</priority>
   </url>
+
+  <url>
+    <loc>https://flashix.2bd.net/about</loc>
+    <priority>0.80</priority>
+    <changefreq>weekly</changefreq>
+  </url>
+
+  <url>
+    <loc>https://flashix.2bd.net/faq</loc>
+    <priority>0.80</priority>
+    <changefreq>weekly</changefreq>
+  </url>
+
+  <url>
+    <loc>https://flashix.2bd.net/security</loc>
+    <priority>0.70</priority>
+    <changefreq>monthly</changefreq>
+  </url>
+
+  <url>
+    <loc>https://flashix.2bd.net/terms</loc>
+    <priority>0.60</priority>
+    <changefreq>monthly</changefreq>
+  </url>
+
+  <url>
+    <loc>https://flashix.2bd.net/contact</loc>
+    <priority>0.70</priority>
+    <changefreq>monthly</changefreq>
+  </url>
+
+    <url>
+    <loc>https://flashix.2bd.net/privacy</loc>
+    <priority>0.70</priority>
+    <changefreq>monthly</changefreq>
+  </url>
+
 </urlset>
