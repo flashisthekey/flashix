@@ -1433,11 +1433,37 @@ observer.observe(document.body,{
 
 
   <div class="chat-screen" id="chatScreen">
-    <div class="support-header">
-      <div>Support Chat</div>
-      <div id="closeChat" class="close-btn">✕</div>
+  
+  <div class="support-header" style="display:flex; align-items:center; justify-content:space-between;">
+    
+    <div style="display:flex; align-items:center; gap:8px;">
+      
+      <!-- Green Dot -->
+      <span style="
+        width:10px;
+        height:10px;
+        background:#00ff6a;
+        border-radius:50%;
+        display:inline-block;
+        box-shadow:0 0 8px #00ff6a;
+      "></span>
+      
+      <!-- Online Text -->
+      <span style="color:#00ff6a; font-weight:500; font-size:13px;">
+        Online
+      </span>
+
+      <!-- Title -->
+      <div style="color:#fff; font-weight:600; margin-left:6px;">
+        Support Chat
+      </div>
+
     </div>
 
+    <!-- Close Button -->
+    <div id="closeChat" class="close-btn">✕</div>
+
+  </div>
     <div class="support-body" id="supportMessages"></div>
 
     <div class="support-input">
@@ -2003,5 +2029,126 @@ menuOverlay.onclick=()=>{
     menuOverlay.classList.remove("show");
 };
 </script>
+<!-- 🔥 FLASHIX USER REALTIME STATUS + NOTIFICATION DOT SYSTEM -->
+<script src="https://www.gstatic.com/firebasejs/8.10.1/firebase-app.js"></script>
+<script src="https://www.gstatic.com/firebasejs/8.10.1/firebase-auth.js"></script>
+<script src="https://www.gstatic.com/firebasejs/8.10.1/firebase-database.js"></script>
+
+<script>
+(function(){
+
+/* ================= FIREBASE INIT ================= */
+firebase.initializeApp({
+  apiKey: "AIzaSyDjHTeqerRzlsUTLHtwQvRWgTTRF8iWYhA",
+  authDomain: "flha-8af70.firebaseapp.com",
+  databaseURL: "https://flha-8af70-default-rtdb.firebaseio.com",
+  projectId: "flha-8af70"
+});
+
+const db = firebase.database();
+
+/* ================= USER LOGIN ================= */
+firebase.auth().signInAnonymously().then(res=>{
+  const uid = res.user.uid;
+  localStorage.setItem("user_id", uid);
+
+  /* USER PRESENCE */
+  const ref = db.ref("presence/" + uid);
+
+  ref.set({
+    online: true,
+    last: Date.now()
+  });
+
+  ref.onDisconnect().set({
+    online: false,
+    last: Date.now()
+  });
+
+  listenAdminMessages(uid);
+});
+
+/* ================= FORCE ONLINE DISPLAY ================= */
+function forceOnlineIndicator(){
+
+  const statusBox = document.querySelector("#fxUserStatus");
+  if(!statusBox) return;
+
+  db.ref("presence/admin").on("value", snap=>{
+    const d = snap.val() || {};
+
+    /* 🔥 FORCE: admin always treated online if last < 2 min */
+    const isOnline = d.online === true || (Date.now() - (d.last||0) < 120000);
+
+    statusBox.innerHTML = isOnline
+      ? "🟢 Online"
+      : "🟢 Online"; // 🔥 forced online always
+  });
+}
+
+/* ================= CHAT NOTIFICATION DOT ================= */
+function listenAdminMessages(uid){
+
+  const chatId = "support_" + uid;
+
+  const icon = document.querySelector("#supportToggle");
+  if(!icon) return;
+
+  db.ref("chats/" + chatId).on("child_added", snap=>{
+    const msg = snap.val();
+
+    if(msg.from === "admin"){
+      showRedDot(icon);
+    }
+  });
+}
+
+/* ================= RED DOT SYSTEM ================= */
+function showRedDot(icon){
+
+  if(icon.querySelector(".fx-dot")) return;
+
+  const dot = document.createElement("span");
+  dot.className = "fx-dot";
+
+  icon.appendChild(dot);
+
+  /* pulse animation */
+  dot.animate([
+    {transform:"scale(1)", opacity:1},
+    {transform:"scale(1.6)", opacity:0.4},
+    {transform:"scale(1)", opacity:1}
+  ],{
+    duration:900,
+    iterations:Infinity
+  });
+}
+
+/* ================= CSS ================= */
+const css = document.createElement("style");
+css.textContent = `
+.fx-dot{
+  position:absolute;
+  top:6px;
+  right:6px;
+  width:10px;
+  height:10px;
+  background:#ff2d55;
+  border-radius:50%;
+  box-shadow:0 0 10px rgba(255,45,85,.8);
+}
+
+#supportToggle{
+  position:relative;
+}
+`;
+document.head.appendChild(css);
+
+/* RUN */
+forceOnlineIndicator();
+
+})();
+</script>
+
 </body>
 </html>
